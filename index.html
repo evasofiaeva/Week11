@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChart2);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Number', 'Number of Mussels Species Found'],
+          ['Delaware River',  12],
+          ['White Clay Creek',  5],
+          ['Chester Creek',  1],
+          ['Ridley Creek',  3]
+        ]);
+
+        var options = {
+          title: 'Mussle Species Found in Delaware River and minor tributaries (2018)',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+        
+      }
+      
+      function drawChart2() { var data2 = google.visualization.arrayToDataTable([
+          ['Name', 'Number of Mussels'],
+          ['Creeper', 5],
+          ['Yellow Lampmussel', 841],
+          ['Alewife Floater', 370],
+          ['Eastern Floater', 190],
+          ['Tidewater Mucket',6]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Number of Mussels Found in Lower Delaware River basin during the summer of 2013',
+            subtitle: 'Changes in Freshwater Mussel Communities Linked to Legacy Pollution',
+          }
+        };
+
+        var chart2 = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart2.draw(data2, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    <div id="columnchart_material" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
